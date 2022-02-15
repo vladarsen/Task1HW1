@@ -2,6 +2,7 @@ package com.vladarsenjtev;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Human {
     protected String name;
@@ -71,6 +72,18 @@ public class Human {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Human human = (Human) o;
+        return Objects.equals(name, human.name) && Objects.equals(surname, human.surname) && Objects.equals(patronymic, human.patronymic);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, surname, patronymic);
+    }
+
     public String toString() {
         return "Human{" +
                 "name='" + name + '\'' +
